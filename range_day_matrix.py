@@ -16,12 +16,6 @@ for row in range(size):
         if data[col] == "x":
             potential_targets += 1
 
-direction_shoot = {
-    "left": lambda r, c: (r, c - 1),
-    "right": lambda r, c: (r, c + 1),
-    "up": lambda r, c: (r - 1, c),
-    "down": lambda r, c: (r + 1, c)
-}
 direction_move = {
     "left": lambda r, c, step: (r, c - step),
     "right": lambda r, c, step: (r, c + step),
@@ -48,7 +42,7 @@ for i in range(command_num):
         shoot_col = current_col
         shot = False
         while True:
-            row, col = direction_shoot[way](shoot_row, shoot_col)
+            row, col = direction_move[way](shoot_row, shoot_col, 1)
             if 0 <= row < size and 0 <= col < size:
                 shoot_row = row
                 shoot_col = col
